@@ -15,3 +15,10 @@ class Product(ProductBase, table=True):
 
 class ProductCreate(ProductBase):
     pass
+
+
+class ProductBase(SQLModel):
+    title: str
+    description: Optional[str] = None
+    price_cents: int = 0
+    is_published: bool = True

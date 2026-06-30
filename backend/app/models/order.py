@@ -5,6 +5,8 @@ from .product import Product
 
 
 class OrderItem(SQLModel, table=True):
+    __table_args__ = {"extend_existing": True}
+
     id: Optional[int] = Field(default=None, primary_key=True)
     order_id: Optional[int] = Field(default=None, foreign_key="order.id")
     product_id: Optional[int] = Field(default=None, foreign_key="product.id")
@@ -12,6 +14,8 @@ class OrderItem(SQLModel, table=True):
 
 
 class Order(SQLModel, table=True):
+    __table_args__ = {"extend_existing": True}
+
     id: Optional[int] = Field(default=None, primary_key=True)
     user_id: Optional[int] = Field(default=None, foreign_key="user.id")
     total_cents: int = 0
